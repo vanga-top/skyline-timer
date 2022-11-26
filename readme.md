@@ -20,7 +20,7 @@
 
 ### 如何使用
 
-docs目录下有个skyline.zip [skyline.zio](docs/skyline.zip) 包，解压后，进到该目录
+docs目录下有个skyline.zip [skyline.zip](docs/skyline.zip) 包，解压后，进到该目录
 
 ```java
 java -jar skylinetimer.jar
