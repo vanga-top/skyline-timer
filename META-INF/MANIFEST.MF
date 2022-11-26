@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: com.skyline.timer.App
+Class-Path: jl1.0.jar mp3spi1.9.4.jar tritonus_share.jar
+
