@@ -36,4 +36,9 @@ public class RoundPad extends JLabel {
     private String composeRoundString(String prefix, int value) {
         return prefix + value;
     }
+
+    public void reset() {
+        this.setForeground(Color.RED);
+        this.setText(composeRoundString(ROUND, 1));
+    }
 }

@@ -9,6 +9,7 @@ import java.awt.*;
 public class ControlPanel extends JPanel {
 
     private JButton startBtn = new JButton("开始");
+    private JButton clearBtn = new JButton("清空");
 
     public ControlPanel(int width, int height) {
         super.setPreferredSize(new Dimension(width, height));
@@ -23,10 +24,16 @@ public class ControlPanel extends JPanel {
     private void init() {
         startBtn.setPreferredSize(new Dimension(80, 40));
         super.add(startBtn);
+
+        clearBtn.setPreferredSize(new Dimension(80, 40));
+        super.add(clearBtn);
     }
 
     public JButton getStartBtn() {
         return startBtn;
     }
 
+    public JButton getClearBtn() {
+        return clearBtn;
+    }
 }

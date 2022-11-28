@@ -33,6 +33,7 @@ public class Controller {
     }
 
     public synchronized static void START() {
+        EXIT = false;
         RUNNING = true;
     }
 
@@ -42,6 +43,15 @@ public class Controller {
 
     public static boolean EXIT_STATE() {
         return EXIT;
+    }
+
+    /**
+     * 退出
+     */
+    public static void EXIT() {
+        RUNNING = false;
+        PAUSE = false;
+        EXIT = true;
     }
 
 }

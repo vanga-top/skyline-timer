@@ -40,11 +40,13 @@ public class CountDown implements Runnable {
             }).start();
             //先处理活动的倒计时
             countDownWhile(true, this.activeTime);
-
             //设置休息时间
             this.roundPad.setRoundText(false, i + 1);
             countDownWhile(false, this.restTime);
         }
+
+        this.roundPad.reset();
+        this.timerPad.reset();
     }
 
 
@@ -69,7 +71,7 @@ public class CountDown implements Runnable {
                 }
                 this.timerPad.setTimeText(TimerUtils.composeCountDownTime(time));
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                break;
             }
         }
     }

@@ -7,8 +7,6 @@ import com.skyline.timer.schedule.CountDown;
 import com.skyline.timer.utils.TimerUtils;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 /**
@@ -16,6 +14,7 @@ import java.awt.event.ActionListener;
  */
 public class ControlEventProcessor {
 
+    private static Thread th = null;
 
     public static void bind(ControlPanel cp, TimerPanel tp, SettingPanel sp) {
         //设置默认选中的时间
@@ -28,8 +27,9 @@ public class ControlEventProcessor {
                     Controller.START();
                     startBtn.setText("暂停");
                     //增加业务逻辑
-                    new Thread(new CountDown(tp.getTimerPad(), tp.getRoundPad(),
-                            sp.getActiveTime(), sp.getRestTime(), sp.getCount())).start();
+                    th = new Thread(new CountDown(tp.getTimerPad(), tp.getRoundPad(),
+                            sp.getActiveTime(), sp.getRestTime(), sp.getCount()));
+                    th.start();
                 } else if (Controller.RUNNING_STATE() && !Controller.PAUSE_STATE()) {//运行中，点击了暂停
                     //设置状态为暂停
                     Controller.PAUSE();
@@ -48,6 +48,24 @@ public class ControlEventProcessor {
                 if (!Controller.RUNNING_STATE() && !Controller.PAUSE_STATE()) {
                     int time = TimerUtils.timeStringToInt((String) box.getSelectedItem());
                     tp.getTimerPad().setTimeText(TimerUtils.composeCountDownTime(time));
+                }
+            }
+        });
+
+        JButton clearBtn = cp.getClearBtn();
+        clearBtn.addActionListener(e -> {
+            if (e.getSource() == clearBtn) {//click事件
+                if (Controller.RUNNING_STATE() && !Controller.PAUSE_STATE()) {//运行状态
+                    JOptionPane.showMessageDialog(null, "运行中，无法清空。请先暂停！！");
+                } else if (!Controller.RUNNING_STATE() && Controller.PAUSE_STATE()) {//暂停状态
+                    Controller.EXIT();
+                    th.interrupt();
+                    th = null;
+                    //设置默认选中的时间
+                    tp.getTimerPad().setTimeText(TimerUtils.composeCountDownTime(sp.getActiveTime()));
+                    //重置round
+                    tp.getRoundPad().reset();
+                    startBtn.setText("开始");
                 }
             }
         });

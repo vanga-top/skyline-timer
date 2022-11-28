@@ -16,4 +16,8 @@ public class TimerPad extends JLabel {
         super.setText(time);
         super.setForeground(Color.WHITE);
     }
+
+    public void reset() {
+        this.setText("00:00:00");
+    }
 }
