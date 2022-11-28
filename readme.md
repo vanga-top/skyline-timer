@@ -26,4 +26,14 @@ docs目录下有个skyline.zip [skyline.zip](docs/skyline.zip) 包，解压后�
 java -jar skylinetimer.jar
 ```
 
+
+如果windows运行，可以写个bat脚本：
+
+```shell
+start cmd /k "cd/d C:\Users\58179\$your_path && java -jar skylinetimer.jar cmd.exe"
+```
+
+$your_path 到skyline的解压目录即可。
+
+
 没时间做打包和做脚本了，比较临时弄的，也没标准化工程，随便看看。代码没重构过，不要学习。
