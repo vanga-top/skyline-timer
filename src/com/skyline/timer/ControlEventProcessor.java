@@ -16,6 +16,12 @@ public class ControlEventProcessor {
 
     private static Thread th = null;
 
+    /**
+     * 核心事件绑定，做一些监听处理
+     * @param cp
+     * @param tp
+     * @param sp
+     */
     public static void bind(ControlPanel cp, TimerPanel tp, SettingPanel sp) {
         //设置默认选中的时间
         tp.getTimerPad().setTimeText(TimerUtils.composeCountDownTime(sp.getActiveTime()));

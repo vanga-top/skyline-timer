@@ -26,15 +26,8 @@ public class App {
         //top panel
         BoardPanel top = new BoardPanel(1200, 70);
         main.getContentPane().add(top);
-//        ImageIcon imageIconSource = new ImageIcon("resources/image/logo.png");
-//        java.awt.Image image = imageIconSource.getImage();
-//        Image tempImage = image.getScaledInstance(120,120,Image.SCALE_DEFAULT);
-//        ImageIcon imageIcon = new ImageIcon(tempImage);
 
-        //logo.setIcon(imageIcon);
-
-
-        //logp
+        //logo panel
         BoardPanel logoPanel = new BoardPanel(1200, 80);
         logoPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         JLabel logo = new JLabel("天际拳击-训练计时器");
