@@ -12,7 +12,7 @@ import javax.swing.*;
 /**
  * 处理核心事件
  */
-public class ControlEventProcessor {
+public class ControlEventProcessor  {
 
     private static Thread th = null;
 
