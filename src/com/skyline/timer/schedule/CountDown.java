@@ -65,6 +65,21 @@ public class CountDown implements Runnable {
                         AudioPlayer.Mp3Player("resources/audio/dingdingding.mp3");
                     }).start();
                 }
+
+                if (active && time == 0) {//一轮结束的时候播放dingding结束音
+                    // 播放开始音乐
+                    new Thread(() -> {
+                        AudioPlayer.Mp3Player("resources/audio/dingding.mp3");
+                    }).start();
+                }
+
+                if (!active && time == 11) {
+                    // 播放开始音乐
+                    new Thread(() -> {
+                        AudioPlayer.Mp3Player("resources/audio/daojishi.mp3");
+                    }).start();
+                }
+
                 Thread.sleep(1000);
                 if (Controller.PAUSE_STATE()) {//如果设置了暂停，就恢复时间
                     time++;
